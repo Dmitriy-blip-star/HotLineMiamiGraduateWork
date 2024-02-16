@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-    [SerializeField] GameObject pauseBanner;
-    [SerializeField] GameObject levelUI;
+    [SerializeField] private GameObject _pauseBanner;
+    [SerializeField] private GameObject _levelUI;
     public void inGame()
     {
         SceneManager.LoadScene("GameLevel1");
@@ -18,15 +17,15 @@ public class ButtonScript : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0;
-        levelUI.SetActive(false);
-        pauseBanner.SetActive(true);
+        _levelUI.SetActive(false);
+        _pauseBanner.SetActive(true);
     }
 
     public void Continue()
     {
         Time.timeScale = 1;
-        levelUI.SetActive(true);
-        pauseBanner.SetActive(false);
+        _levelUI.SetActive(true);
+        _pauseBanner.SetActive(false);
     }
 
     public void inMenu()

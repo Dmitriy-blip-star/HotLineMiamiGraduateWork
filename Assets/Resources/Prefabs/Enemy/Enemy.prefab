@@ -110,10 +110,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _rotationSpeed: 360
-  _audioManager: {fileID: 0}
-  MeshAgent: {fileID: 0}
   _distanceDetected: 6
   _shootDistance: 3
+  _audioManager: {fileID: 0}
+  MeshAgent: {fileID: 0}
 --- !u!114 &7014953877713607659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,14 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f577c36a8c485f243b285c0d744e6649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon:
+  Weapon:
     weaponType: 1
-  shootLight: {fileID: 1621543052827837302}
-  shootColdown: 0.3
+  ShootLight: {fileID: 0}
   curentWeaponType: 
   shoot: 0
   bulletSpawnPosition: {fileID: 4317274940205511401}
-  Weapon: 0
+  WeaponID: 0
 --- !u!114 &5644912680795534907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07e19b653b9948499edc1ee8f230bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  _maxHealth: 0
   isDead: 0
 --- !u!58 &7005958497538196368
 CircleCollider2D:
@@ -257,11 +256,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c02e9f2b396c334782617157fbcb3b2, type: 3}
---- !u!1 &1621543052827837302 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6685140808765734776, guid: 8c02e9f2b396c334782617157fbcb3b2, type: 3}
-  m_PrefabInstance: {fileID: 5352111398606126094}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4703809979593908277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 793142285987306555, guid: 8c02e9f2b396c334782617157fbcb3b2, type: 3}

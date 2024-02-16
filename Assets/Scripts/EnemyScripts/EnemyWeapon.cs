@@ -1,22 +1,21 @@
 ﻿using Assets.Scripts.Weapons;
-using UnityEngine;
 
 namespace Assets.Scripts.Enemy
 {
     public class EnemyWeapon : BaseWeapon
     {
-        public int Weapon;
+        public int WeaponID;
 
         private void Awake()
         {
-            curentWeaponType = weapon.weaponType.ToString();
+            curentWeaponType = Weapon.weaponType.ToString();
             WeaponStrToID();
         }
 
         private void Start()
         {
-            
-            
+
+
         }
 
         public void WeaponStrToID()
@@ -24,17 +23,17 @@ namespace Assets.Scripts.Enemy
             switch (curentWeaponType)
             {
                 case "Null":
-                     Weapon = 0;
+                    WeaponID = 0;
                     break;
 
                 case "Rifle":
-                    Weapon = 1;
+                    WeaponID = 1;
                     break;
                 case "Shotgun":
-                    Weapon = 2;
+                    WeaponID = 2;
                     break;
                 case "BigGun":
-                    Weapon = 3;
+                    WeaponID = 3;
                     break;
             }
         }

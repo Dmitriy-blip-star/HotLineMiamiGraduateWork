@@ -5,27 +5,27 @@ namespace Assets.Scripts
 {
     public class PlayerHealth : MonoBehaviour
     {
-        [SerializeField] int maxHealth = 10;
-        public static int health { get; private set; }
-        PlayerAnimationController animator;
-       
+        [SerializeField] private int _maxHealth = 10;
+        public static int Health { get; private set; }
+        private PlayerAnimationController _animator;
+
 
         private void Start()
         {
-            health = maxHealth;
-            animator = GetComponent<PlayerAnimationController>();
+            Health = _maxHealth;
+            _animator = GetComponent<PlayerAnimationController>();
         }
 
         public void TakeDamage(int damage)
         {
-            health -= damage;
-            
-            if (health <= 0)
+            Health -= damage;
+
+            if (Health <= 0)
             {
-                animator.DeadAnimation();
+                _animator.DeadAnimation();
                 Time.timeScale = 0;
                 Destroy(GetComponent<PlayerHealth>());
-                          
+
             }
         }
     }

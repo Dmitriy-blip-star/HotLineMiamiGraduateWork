@@ -4,20 +4,19 @@ using UnityEngine;
 public class EnemyAnimationController : MonoBehaviour
 {
     private Enemy _enemy;
-    private EnemyWeapon _weapon;
+    private EnemyWeapon _enemyWeapon;
     private EnemyHealth _enemyHealth;
     [SerializeField] private Animator _animator;
-
 
     private int _weaponID;
 
     private void Start()
     {
         _enemy = GetComponent<Enemy>();
-        _weapon = GetComponent<EnemyWeapon>();
+        _enemyWeapon = GetComponent<EnemyWeapon>();
         _enemyHealth = GetComponent<EnemyHealth>();
 
-        _weaponID = _weapon.Weapon;
+        _weaponID = _enemyWeapon.WeaponID;
         _animator.SetInteger("weapons", _weaponID);
     }
 

@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Weapons
 {
     [SelectionBase]
     public class WeaponManager : MonoBehaviour
     {
-        [SerializeField] public Weapon weapon;
+        [SerializeField] public Weapon Weapon;
 
-        PlayerWeaponManager playerWeaponManager;
+        private PlayerWeaponManager _playerWeaponManager;
 
         private void Start()
         {
-            playerWeaponManager = FindObjectOfType<PlayerWeaponManager>();
+            _playerWeaponManager = FindObjectOfType<PlayerWeaponManager>();
         }
 
         private void OnTriggerStay2D(Collider2D collision)
@@ -38,12 +36,12 @@ namespace Assets.Scripts.Weapons
 
         private void ChangeWeapons()
         {
-            if (playerWeaponManager.curentWeaponType != "Null")
+            if (_playerWeaponManager.CurentWeaponType != "Null")
             {
-                playerWeaponManager.DropWeapon(playerWeaponManager.curentWeaponType);
+                _playerWeaponManager.DropWeapon(_playerWeaponManager.CurentWeaponType);
             }
 
-            playerWeaponManager.curentWeaponType = weapon.weaponType.ToString();
+            _playerWeaponManager.CurentWeaponType = Weapon.weaponType.ToString();
             Destroy(gameObject, 0.05f);
         }
     }

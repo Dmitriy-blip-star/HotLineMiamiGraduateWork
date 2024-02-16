@@ -4,8 +4,8 @@ namespace Assets.Scripts.Weapons
 {
     public class BaseWeapon : MonoBehaviour
     {
-        [SerializeField] public Weapon weapon;
-        [SerializeField] public GameObject shootLight;
+        [SerializeField] public Weapon Weapon;
+        [SerializeField] public GameObject ShootLight;
 
         public string curentWeaponType;
         public bool shoot = false;
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Weapons
                 _randomSpread = new Vector3(0, Random.Range(-0.08f, 0.08f), 0);
 
                 Instantiate(Resources.Load("Prefabs/Weapons/" + curentWeaponType + "Bullet"), bulletSpawnPosition.position + -_randomSpread, bulletSpawnPosition.rotation);
-                shootLight.SetActive(true);
+                ShootLight.SetActive(true);
                 _timer = wait;
             }
         }

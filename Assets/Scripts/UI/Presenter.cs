@@ -7,31 +7,31 @@ namespace Assets.Scripts.UI
 {
     public class Presenter : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI _healthText;
+        [SerializeField] private TextMeshProUGUI _enemysText;
 
-        [SerializeField] TextMeshProUGUI healthText;
-        [SerializeField] TextMeshProUGUI enemysText;
-        [SerializeField] GameObject levelCompletePanel;
-        [SerializeField] GameObject levelUI;
-        [SerializeField] GameObject lossPanel;
+        [SerializeField] private GameObject _levelCompletePanel;
+        [SerializeField] private GameObject _levelUI;
+        [SerializeField] private GameObject _lossPanel;
 
         private void Update()
         {
-            enemysText.text = $"{EnemyHealth.DeadEnemys}/{LevelController.StartEnemysOnLevel}";
-            healthText.text = $"{PlayerHealth.health}%";
+            _enemysText.text = $"{EnemyHealth.DeadEnemys}/{LevelController.StartEnemysOnLevel}";
+            _healthText.text = $"{PlayerHealth.Health}%";
 
             if (LevelController.isLevelComplete)
             {
-                levelUI.SetActive(false);
-                levelCompletePanel.SetActive(true);
+                _levelUI.SetActive(false);
+                _levelCompletePanel.SetActive(true);
             }
             LossChecker();
         }
 
         private void LossChecker()
         {
-            if (PlayerHealth.health <= 0)
-            { 
-                lossPanel.SetActive(true);
+            if (PlayerHealth.Health <= 0)
+            {
+                _lossPanel.SetActive(true);
 
             }
         }

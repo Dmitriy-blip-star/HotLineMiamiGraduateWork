@@ -13,8 +13,6 @@ namespace Assets.Scripts.GameManager
             Time.timeScale = 1;
             isLevelComplete = false;
             StartEnemysOnLevel = FindObjectsOfType<EnemyHealth>().Length;
-            
-
         }
 
         private void Update()

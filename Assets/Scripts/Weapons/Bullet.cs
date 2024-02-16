@@ -6,12 +6,12 @@ namespace Assets.Scripts
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] float speed;
-        Rigidbody2D rb;
+        [SerializeField] private float _speed;
+        private Rigidbody2D _rb;
         [HideInInspector] public int damage = 12;
         private void Start()
         {
-            rb= GetComponent<Rigidbody2D>();
+            _rb = GetComponent<Rigidbody2D>();
             Destroy(gameObject, 3);
         }
 
@@ -33,7 +33,7 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            rb.velocity = transform.right * speed;
+            _rb.velocity = transform.right * _speed;
         }
 
 

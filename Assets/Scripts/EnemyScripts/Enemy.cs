@@ -6,38 +6,42 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Follow settings")]
     [SerializeField] private Transform _target;
     [SerializeField] private Transform[] _wayPoints;
     [SerializeField] private float _rotationSpeed;
-    [SerializeField] AudioManager _audioManager;
     private Transform _curentTarget;
     private int _pointInd = 0;
 
-    public NavMeshAgent MeshAgent;
-    RaycastHit2D hit;
-    EnemyWeapon enemyWeapon;
-    EnemyHealth enemyHealth;
-
-    private bool _targetIsClose = false;
+    [Header("Detected settings")]
     [SerializeField] private float _distanceDetected = 6;
     [SerializeField] private float _shootDistance;
+    private RaycastHit2D _hit;
+    private bool _targetIsClose = false;
+    private int _layerMask = 1 << 8;
+
+    [Header("Audio")]
+    [SerializeField] private AudioManager _audioManager;
     
-    int layerMask = 1 << 8;
+    [HideInInspector] public NavMeshAgent MeshAgent;
+    
+    private EnemyWeapon _enemyWeapon;
+    private EnemyHealth _enemyHealth;
 
     private void Start()
     {
-        enemyWeapon = GetComponent<EnemyWeapon>();
-        MeshAgent= GetComponent<NavMeshAgent>();
-        enemyHealth= GetComponent<EnemyHealth>();
+        _enemyWeapon = GetComponent<EnemyWeapon>();
+        MeshAgent = GetComponent<NavMeshAgent>();
+        _enemyHealth = GetComponent<EnemyHealth>();
 
         MeshAgent.updateRotation = false;
-        MeshAgent.updateUpAxis= false;
+        MeshAgent.updateUpAxis = false;
 
-        layerMask = ~layerMask;
+        _layerMask = ~_layerMask;
     }
     private void Update()
     {
-        if (!enemyHealth.isDead)
+        if (!_enemyHealth.isDead)
         {
             if (!_targetIsClose)
             {
@@ -49,9 +53,9 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            MeshAgent.enabled= false;
+            MeshAgent.enabled = false;
             _audioManager.StopShootAudio();
-            enemyWeapon.DropWeapon(enemyWeapon.curentWeaponType);
+            _enemyWeapon.DropWeapon(_enemyWeapon.curentWeaponType);
 
         }
     }
@@ -66,7 +70,7 @@ public class Enemy : MonoBehaviour
     private void DrawRay()
     {
         Vector3 directional = _target.position - transform.position;
-        hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(directional.x, directional.y), 1000, layerMask);
+        _hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(directional.x, directional.y), 1000, _layerMask);
         Debug.DrawRay(transform.position, directional, Color.red);
     }
 
@@ -79,25 +83,25 @@ public class Enemy : MonoBehaviour
             {
                 _pointInd = 0;
             }
-            _curentTarget= _wayPoints[_pointInd];
+            _curentTarget = _wayPoints[_pointInd];
             MeshAgent.SetDestination(_curentTarget.position);
         }
     }
 
     private void PlayerDetected()
     {
-        if (hit.collider != null)
+        if (_hit.collider != null)
         {
-            if (hit.transform.gameObject.GetComponent<PlayerHealth>() && hit.distance <= _distanceDetected)
+            if (_hit.transform.gameObject.GetComponent<PlayerHealth>() && _hit.distance <= _distanceDetected)
             {
                 _targetIsClose = true;
                 _curentTarget = _target;
                 MeshAgent.SetDestination(_curentTarget.position);
 
-                if (hit.transform.gameObject.GetComponent<PlayerHealth>() && hit.distance <= _shootDistance)
+                if (_hit.transform.gameObject.GetComponent<PlayerHealth>() && _hit.distance <= _shootDistance)
                 {
                     MeshAgent.SetDestination(transform.position);
-                    enemyWeapon.AttackManager(enemyWeapon.Weapon);
+                    _enemyWeapon.AttackManager(_enemyWeapon.WeaponID);
                     if (!_audioManager.isShoot)
                     {
                         _audioManager.PlayShootAudio();
@@ -105,7 +109,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    enemyWeapon.shootLight.SetActive(false);
+                    _enemyWeapon.ShootLight.SetActive(false);
                     _audioManager.StopShootAudio();
                     Movement();
                 }

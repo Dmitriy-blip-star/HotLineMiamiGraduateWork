@@ -4,27 +4,27 @@ namespace Assets.Scripts.AudioManager
 {
     public class AudioManager : MonoBehaviour
     {
-        [SerializeField] AudioClip shootAudio;
+        [SerializeField] private AudioClip _shootAudio;
 
-        AudioSource audioSource;
+        private AudioSource _audioSource;
 
         public bool isShoot = false;
 
         private void Start()
         {
-            audioSource = GetComponent<AudioSource>();
-            audioSource.clip = shootAudio;
+            _audioSource = GetComponent<AudioSource>();
+            _audioSource.clip = _shootAudio;
         }
 
         public void PlayShootAudio()
         {
-            audioSource.loop = true;
-            audioSource.Play();
+            _audioSource.loop = true;
+            _audioSource.Play();
             isShoot = true;
         }
         public void StopShootAudio()
         {
-            audioSource.loop = false;
+            _audioSource.loop = false;
             isShoot = false;
         }
     }

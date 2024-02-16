@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -8,22 +6,22 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] private Animator _anim;
         private PlayerWeaponManager _playerWeaponManager;
-        private PlayerMovement playerMovement;
+        private PlayerMovement _playerMovement;
 
-        public int weaponID = 0;
+        public int WeaponID = 0;
         private bool _shoot = false;
 
         private void Start()
         {
             _playerWeaponManager = GetComponent<PlayerWeaponManager>();
-            playerMovement= GetComponent<PlayerMovement>();
+            _playerMovement = GetComponent<PlayerMovement>();
         }
 
         private void Update()
         {
-            _anim.SetInteger("weapons", weaponID);
-            WeaponAnimation(_playerWeaponManager.curentWeaponType);
-            if (playerMovement.isMove)
+            _anim.SetInteger("weapons", WeaponID);
+            WeaponAnimation(_playerWeaponManager.CurentWeaponType);
+            if (_playerMovement.isMove)
             {
                 _anim.StopPlayback();
             }
@@ -39,17 +37,17 @@ namespace Assets.Scripts.Player
             switch (weapon)
             {
                 case "Null":
-                    weaponID = 0;
+                    WeaponID = 0;
                     break;
 
                 case "Rifle":
-                    weaponID = 1;
+                    WeaponID = 1;
                     break;
                 case "Shotgun":
-                    weaponID = 2;
+                    WeaponID = 2;
                     break;
                 case "BigGun":
-                    weaponID = 3;
+                    WeaponID = 3;
                     break;
             }
         }

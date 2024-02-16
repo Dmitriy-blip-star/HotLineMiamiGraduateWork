@@ -3,15 +3,15 @@
 namespace Assets.Scripts.Enemy
 {
     public class EnemyHealth : MonoBehaviour
-    {
-        int health;
-        [SerializeField] int maxHealth;
+    { 
+        [SerializeField] private int _maxHealth;
+        private int _health;
         public bool isDead = false;
         public static int DeadEnemys = 0;
 
         private void Start()
         {
-            health = maxHealth;
+            _health = _maxHealth;
             DeadEnemys = 0;
         }
 
@@ -19,8 +19,8 @@ namespace Assets.Scripts.Enemy
         {
             if (!isDead)
             {
-                health -= damage;
-                if (health <= 0)
+                _health -= damage;
+                if (_health <= 0)
                 {
                     isDead = true;
                     DeadEnemys++;

@@ -3,15 +3,11 @@ using UnityEngine;
 [SelectionBase]
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D _rb;
-
     [SerializeField] private float _speed = 5f;
-
-    private float _x, _y;
-
     private Vector2 _dir;
-
+    private float _x, _y;
     public bool isMove = false;
+    private Rigidbody2D _rb;
 
     private void Start()
     {
@@ -30,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Movement();
-        Looking();        
+        Looking();
     }
 
     private void Movement()
