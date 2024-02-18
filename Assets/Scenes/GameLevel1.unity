@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2789675b55d09754f83729c48d80443f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootAudio: {fileID: 0}
+  _shootAudio: {fileID: 8300000, guid: a5ad0e171083c0a44848c2119f8b5a97, type: 3}
   isShoot: 0
 --- !u!4 &445686219 stripped
 Transform:
@@ -944,8 +944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69c67b120d78924aa1aafbd80dfccc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseBanner: {fileID: 0}
-  _levelUI: {fileID: 0}
+  _pauseBanner: {fileID: 1180871591}
+  _levelUI: {fileID: 1996000076}
 --- !u!114 &498798491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,11 +958,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d55fa2155bdbd24495a7d491334293d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthText: {fileID: 0}
-  _enemysText: {fileID: 0}
-  _levelCompletePanel: {fileID: 0}
-  _levelUI: {fileID: 0}
-  _lossPanel: {fileID: 0}
+  _healthText: {fileID: 1266856695}
+  _enemysText: {fileID: 1769637824}
+  _levelCompletePanel: {fileID: 846185392}
+  _levelUI: {fileID: 1996000076}
+  _lossPanel: {fileID: 2021935754}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2789675b55d09754f83729c48d80443f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootAudio: {fileID: 0}
+  _shootAudio: {fileID: 8300000, guid: a5ad0e171083c0a44848c2119f8b5a97, type: 3}
   isShoot: 0
 --- !u!82 &655067849
 AudioSource:
@@ -1268,6 +1268,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 445686219}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &697878112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 697878113}
+  m_Layer: 0
+  m_Name: MeleeAttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &697878113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697878112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.196, y: 0.121, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1288530290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &713109948
 GameObject:
@@ -1389,6 +1420,10 @@ PrefabInstance:
       propertyPath: ShootLight
       value: 
       objectReference: {fileID: 1918174284}
+    - target: {fileID: 7492514832768683164, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
+      propertyPath: _maxHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9026859398972603643, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -1432,6 +1467,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1458620222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &846185392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7621919591746341564, guid: 1f126b31b8556ed478cef8cbfe6612d1, type: 3}
+  m_PrefabInstance: {fileID: 3634516788170623943}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &852377995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4668692981596568179, guid: 227c54aa4c68c464fa47502ca9afef13, type: 3}
@@ -1514,7 +1554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2789675b55d09754f83729c48d80443f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootAudio: {fileID: 0}
+  _shootAudio: {fileID: 8300000, guid: a5ad0e171083c0a44848c2119f8b5a97, type: 3}
   isShoot: 0
 --- !u!82 &1005420846
 AudioSource:
@@ -1783,6 +1823,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1180871591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8572156236913301710, guid: 7dfe36d8ec1026846a435be4692067e8, type: 3}
+  m_PrefabInstance: {fileID: 5769990041393247604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1266856695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2979360581321270798, guid: 2e242d2a72e78fc42ab47408138bdef2, type: 3}
+  m_PrefabInstance: {fileID: 6874827370608111663}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1288530289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,6 +1854,7 @@ GameObject:
   - component: {fileID: 1288530294}
   - component: {fileID: 1288530295}
   - component: {fileID: 1288530296}
+  - component: {fileID: 1288530297}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1822,6 +1879,7 @@ Transform:
   - {fileID: 713109949}
   - {fileID: 647962852}
   - {fileID: 430035634}
+  - {fileID: 697878113}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1288530291
@@ -1930,7 +1988,7 @@ MonoBehaviour:
   _shootLight: {fileID: 6685140808765734776, guid: 8c02e9f2b396c334782617157fbcb3b2, type: 3}
   bulletSpawnPosition: {fileID: 713109949}
   _shootColdown: 0.05
-  CurentWeaponType: 
+  CurentWeaponType: Rifle
   inTrigger: 0
   Shoot: 0
 --- !u!114 &1288530296
@@ -1945,7 +2003,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae82e88312505842bc1a5f08357a2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 1000
+--- !u!114 &1288530297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288530289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6709455939f6dc6469445510575923c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeBtwAttack: 0.2
+  _attackPoint: {fileID: 697878113}
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _attackRang: 0.33
+  _damage: 10
+  _anim: {fileID: 1787344467}
 --- !u!1001 &1296398640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2266,6 +2344,10 @@ PrefabInstance:
       propertyPath: ShootLight
       value: 
       objectReference: {fileID: 1709888169}
+    - target: {fileID: 7492514832768683164, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
+      propertyPath: _maxHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9026859398972603643, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
@@ -2433,7 +2515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2789675b55d09754f83729c48d80443f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootAudio: {fileID: 0}
+  _shootAudio: {fileID: 8300000, guid: a5ad0e171083c0a44848c2119f8b5a97, type: 3}
   isShoot: 0
 --- !u!82 &1669067369
 AudioSource:
@@ -2595,6 +2677,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1621543052827837302, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
   m_PrefabInstance: {fileID: 1421021948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1769637824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6824015518755818082, guid: 2e242d2a72e78fc42ab47408138bdef2, type: 3}
+  m_PrefabInstance: {fileID: 6874827370608111663}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1787344465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,7 +2850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2789675b55d09754f83729c48d80443f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootAudio: {fileID: 0}
+  _shootAudio: {fileID: 8300000, guid: a5ad0e171083c0a44848c2119f8b5a97, type: 3}
   isShoot: 0
 --- !u!82 &1829002202
 AudioSource:
@@ -2942,6 +3035,10 @@ PrefabInstance:
       propertyPath: ShootLight
       value: 
       objectReference: {fileID: 215943253}
+    - target: {fileID: 7492514832768683164, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
+      propertyPath: _maxHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9026859398972603643, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
@@ -3129,6 +3226,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1458620222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1996000076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5414992864247866103, guid: 2e242d2a72e78fc42ab47408138bdef2, type: 3}
+  m_PrefabInstance: {fileID: 6874827370608111663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2001828406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3186,6 +3288,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d5b72e5740b18e4ea60d8a6f6ceb876, type: 3}
+--- !u!1 &2021935754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 325832389841701970, guid: 321f5040b97d1bf4dae2d527330f7a34, type: 3}
+  m_PrefabInstance: {fileID: 5680600365038946317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2053587988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,6 +3444,10 @@ PrefabInstance:
       propertyPath: ShootLight
       value: 
       objectReference: {fileID: 2084586790}
+    - target: {fileID: 7492514832768683164, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
+      propertyPath: _maxHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9026859398972603643, guid: fb8f2d537f9c5a447be05321ddc03e8e, type: 3}
       propertyPath: m_Name
       value: Enemy

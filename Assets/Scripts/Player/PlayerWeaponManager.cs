@@ -10,7 +10,7 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] private float _shootColdown = 0.05f;
     private float _timer;
 
-    [HideInInspector] public string CurentWeaponType;
+    [SerializeField] public string CurentWeaponType;
     [HideInInspector] public bool inTrigger = false;
     [HideInInspector] public bool Shoot = false;
     
