@@ -8,8 +8,9 @@ namespace Assets.Scripts.Player
         private PlayerWeaponManager _playerWeaponManager;
         private PlayerMovement _playerMovement;
 
-        public int WeaponID = 0;
+        //public int WeaponID = 0;
         private bool _shoot = false;
+        internal int WeaponID;
 
         private void Start()
         {
@@ -20,7 +21,7 @@ namespace Assets.Scripts.Player
         private void Update()
         {
             _anim.SetInteger("weapons", WeaponID);
-            WeaponAnimation(_playerWeaponManager.CurentWeaponType);
+            //WeaponAnimation(_playerWeaponManager.CurentWeaponType);
             if (_playerMovement.isMove)
             {
                 _anim.StopPlayback();
@@ -32,25 +33,25 @@ namespace Assets.Scripts.Player
             }
         }
 
-        private void WeaponAnimation(string weapon)
-        {
-            switch (weapon)
-            {
-                case "Null":
-                    WeaponID = 0;
-                    break;
+        //private void WeaponAnimation(string weapon)
+        //{
+        //    switch (weapon)
+        //    {
+        //        case "Null":
+        //            WeaponID = 0;
+        //            break;
 
-                case "Rifle":
-                    WeaponID = 1;
-                    break;
-                case "Shotgun":
-                    WeaponID = 2;
-                    break;
-                case "BigGun":
-                    WeaponID = 3;
-                    break;
-            }
-        }
+        //        case "Rifle":
+        //            WeaponID = 1;
+        //            break;
+        //        case "Shotgun":
+        //            WeaponID = 2;
+        //            break;
+        //        case "BigGun":
+        //            WeaponID = 3;
+        //            break;
+        //    }
+        //}
 
         public void DeadAnimation()
         {

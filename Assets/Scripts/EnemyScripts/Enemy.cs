@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         {
             MeshAgent.enabled = false;
             _audioManager.StopShootAudio();
-            _enemyWeapon.DropWeapon(_enemyWeapon.curentWeaponType);
+            _enemyWeapon.DropWeapon(_enemyWeapon.CurrentWeaponType);
 
         }
     }

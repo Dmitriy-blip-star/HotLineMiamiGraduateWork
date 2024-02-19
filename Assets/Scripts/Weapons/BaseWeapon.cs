@@ -7,12 +7,18 @@ namespace Assets.Scripts.Weapons
         [SerializeField] public Weapon Weapon;
         [SerializeField] public GameObject ShootLight;
 
-        public string curentWeaponType;
+        public string CurrentWeaponType;
         public bool shoot = false;
         public Transform bulletSpawnPosition;
         private float _timer;
         private Vector3 _randomSpread;
+        public int WeaponID;
 
+        private void Awake()
+        {
+            CurrentWeaponType = Weapon.weaponType.ToString();
+            WeaponStrToID();
+        }
 
         public void Shoot(float wait)
         {
@@ -21,7 +27,7 @@ namespace Assets.Scripts.Weapons
             {
                 _randomSpread = new Vector3(0, Random.Range(-0.08f, 0.08f), 0);
 
-                Instantiate(Resources.Load("Prefabs/Weapons/" + curentWeaponType + "Bullet"), bulletSpawnPosition.position + -_randomSpread, bulletSpawnPosition.rotation);
+                Instantiate(Resources.Load("Prefabs/Weapons/" + CurrentWeaponType + "Bullet"), bulletSpawnPosition.position + -_randomSpread, bulletSpawnPosition.rotation);
                 ShootLight.SetActive(true);
                 _timer = wait;
             }
@@ -29,10 +35,10 @@ namespace Assets.Scripts.Weapons
 
         public virtual void DropWeapon(string weapon)
         {
-            if (curentWeaponType != "Null")
+            if (CurrentWeaponType != "Null")
             {
                 Instantiate(Resources.Load("Prefabs/Weapons/" + weapon), transform.position, Quaternion.identity);
-                curentWeaponType = "Null";
+                CurrentWeaponType = "Null";
             }
         }
 
@@ -50,6 +56,29 @@ namespace Assets.Scripts.Weapons
                     Shoot(0.7f);
                     break;
                 default: break;
+            }
+        }
+
+        public void WeaponStrToID()
+        {
+            switch (CurrentWeaponType)
+            {
+                case "Null":
+                    WeaponID = 0;
+                    break;
+
+                case "Rifle":
+                    WeaponID = 1;
+                    break;
+                case "Shotgun":
+                    WeaponID = 2;
+                    break;
+                case "BigGun":
+                    WeaponID = 3;
+                    break;
+                default:
+                    WeaponID = 1;
+                    break;
             }
         }
     }
