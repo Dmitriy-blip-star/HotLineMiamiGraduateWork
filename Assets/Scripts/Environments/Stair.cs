@@ -17,8 +17,8 @@ public class Stair : MonoBehaviour
         if (collision.GetComponent<PlayerMovement>())
         {
             collision.transform.position = otherFloorSpawn.position;
-            currentFloor.SetActive(!isActiveFloor);
-            otherFloor.SetActive(isActiveFloor);
+            //currentFloor.SetActive(!isActiveFloor);
+            //otherFloor.SetActive(isActiveFloor);
 
         }
     }

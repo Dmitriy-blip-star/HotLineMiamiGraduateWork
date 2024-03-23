@@ -36,12 +36,12 @@ namespace Assets.Scripts.Weapons
 
         private void ChangeWeapons()
         {
-            if (_playerWeaponManager.CurentWeaponType != "Null")
+            if (_playerWeaponManager.CurrentWeaponType != "Null")
             {
-                _playerWeaponManager.DropWeapon(_playerWeaponManager.CurentWeaponType);
+                _playerWeaponManager.DropWeapon(_playerWeaponManager.CurrentWeaponType);
             }
 
-            _playerWeaponManager.CurentWeaponType = Weapon.weaponType.ToString();
+            _playerWeaponManager.CurrentWeaponType = Weapon.weaponType.ToString();
             Destroy(gameObject, 0.05f);
         }
     }

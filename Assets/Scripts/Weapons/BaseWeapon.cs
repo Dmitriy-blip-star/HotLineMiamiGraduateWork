@@ -10,8 +10,8 @@ namespace Assets.Scripts.Weapons
         public string CurrentWeaponType;
         public bool shoot = false;
         public Transform bulletSpawnPosition;
-        private float _timer;
-        private Vector3 _randomSpread;
+        protected float Timer;
+        protected Vector3 RandomSpread;
         public int WeaponID;
 
         private void Awake()
@@ -20,16 +20,16 @@ namespace Assets.Scripts.Weapons
             WeaponStrToID();
         }
 
-        public void Shoot(float wait)
+        public virtual void Shoot(float wait)
         {
-            _timer -= Time.deltaTime;
-            if (_timer <= 0)
+            Timer -= Time.deltaTime;
+            if (Timer <= 0)
             {
-                _randomSpread = new Vector3(0, Random.Range(-0.08f, 0.08f), 0);
+                RandomSpread = new Vector3(0, Random.Range(-0.08f, 0.08f), 0);
 
-                Instantiate(Resources.Load("Prefabs/Weapons/" + CurrentWeaponType + "Bullet"), bulletSpawnPosition.position + -_randomSpread, bulletSpawnPosition.rotation);
+                Instantiate(Resources.Load("Prefabs/Weapons/" + CurrentWeaponType + "Bullet"), bulletSpawnPosition.position + -RandomSpread, bulletSpawnPosition.rotation);
                 ShootLight.SetActive(true);
-                _timer = wait;
+                Timer = wait;
             }
         }
 

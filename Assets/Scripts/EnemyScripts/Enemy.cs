@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [Header("Follow settings")]
-    [SerializeField] private Transform _target;
+    [SerializeField] private PlayerHealth _target;
     [SerializeField] private Transform[] _wayPoints;
     [SerializeField] private float _rotationSpeed;
     private Transform _curentTarget;
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
 
     private void DrawRay()
     {
-        Vector3 directional = _target.position - transform.position;
+        Vector3 directional = _target.transform.position - transform.position;
         _hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(directional.x, directional.y), 1000, _layerMask);
         Debug.DrawRay(transform.position, directional, Color.red);
     }
@@ -95,7 +95,7 @@ public class Enemy : MonoBehaviour
             if (_hit.transform.gameObject.GetComponent<PlayerHealth>() && _hit.distance <= _distanceDetected)
             {
                 _targetIsClose = true;
-                _curentTarget = _target;
+                _curentTarget = _target.transform;
                 MeshAgent.SetDestination(_curentTarget.position);
 
                 if (_hit.transform.gameObject.GetComponent<PlayerHealth>() && _hit.distance <= _shootDistance)

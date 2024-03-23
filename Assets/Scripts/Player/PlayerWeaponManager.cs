@@ -1,42 +1,34 @@
 using Assets.Scripts.AudioManager;
 using Assets.Scripts.Player;
+using Assets.Scripts.Weapons;
 using UnityEngine;
 
-public class PlayerWeaponManager : MonoBehaviour
+public class PlayerWeaponManager : BaseWeapon
 {
     [SerializeField] private AudioManager _audioManager;
-    [SerializeField] private GameObject _shootLight;
-    [SerializeField] private Transform bulletSpawnPosition;
-    [SerializeField] private float _shootColdown = 0.05f;
-    private float _timer;
-
-    [SerializeField] public string CurentWeaponType;
     [HideInInspector] public bool inTrigger = false;
-    [HideInInspector] public bool Shoot = false;
-    
-    private PlayerAnimationController _playerAnimation;
-    
-    private void Start()
-    {
-        _playerAnimation = GetComponent<PlayerAnimationController>();
-        Shoot = true;
-        _timer = _shootColdown;
-    }
+
+    [SerializeField] public int Ammo;
+    public int BulletInMagazine { get; private set; }
+    public int CapacityMagazine { get; private set; } = 30;
 
     private void Update()
     {
         WeaponManager();
-        _timer -= Time.deltaTime;
-
-        if (_timer <= 0)
+        if (Input.GetMouseButton(0))
         {
-            AttackManager(_playerAnimation.WeaponID);
-            _timer = _shootColdown;
+            AttackManager(WeaponID);
         }
+           
         if (Input.GetMouseButtonUp(0))
         {
-            _shootLight.SetActive(false);
+            ShootLight.SetActive(false);
             _audioManager.StopShootAudio();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
         }
     }
 
@@ -44,18 +36,18 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && !inTrigger)
         {
-            DropWeapon(CurentWeaponType);
+            DropWeapon(CurrentWeaponType);
         }
     }
 
-    public void DropWeapon(string weapon)
+    public override void DropWeapon(string weapon)
     {
-        if (CurentWeaponType != "Null")
+        if (CurrentWeaponType != "Null")
         {
             Instantiate(Resources.Load("Prefabs/Weapons/" + weapon), transform.position, Quaternion.identity);
             if (!inTrigger)
             {
-                CurentWeaponType = "Null";
+                CurrentWeaponType = "Null";
             }
             else
             {
@@ -64,32 +56,35 @@ public class PlayerWeaponManager : MonoBehaviour
         }
     }
 
-    private void AttackManager(int ID)
+    public override void Shoot(float wait)
     {
-        if (Input.GetMouseButton(0))
+        Timer -= Time.deltaTime;
+        if (Timer <= 0 && BulletInMagazine > 0)
         {
-            switch (ID)
-            {
-                case 1:
-                    Shooting();
-                    break;
-                case 2:
-                    Shooting();
-                    break;
-                case 3:
-                    Shooting();
-                    break;
-                default: break;
-            }
+            BulletInMagazine--;
+            RandomSpread = new Vector3(0, Random.Range(-0.08f, 0.08f), 0);
+
+            Instantiate(Resources.Load("Prefabs/Weapons/" + CurrentWeaponType + "Bullet"), bulletSpawnPosition.position + -RandomSpread, bulletSpawnPosition.rotation);
+            ShootLight.SetActive(true);
+            Timer = wait;
         }
     }
-    void Shooting()
+
+    private void Reload()
     {
-        Instantiate(Resources.Load("Prefabs/Weapons/" + CurentWeaponType + "Bullet"), bulletSpawnPosition.position, bulletSpawnPosition.rotation);
-        _shootLight.SetActive(true);
-        if (!_audioManager.isShoot)
+        if (Ammo >= CapacityMagazine)
         {
-            _audioManager.PlayShootAudio();
+            BulletInMagazine = CapacityMagazine;
+            Ammo -= CapacityMagazine;
+        }
+        else if(Ammo > 0)
+        {
+            BulletInMagazine = Ammo;
+            Ammo = 0;
+        }
+        else
+        {
+            print("No ammo");
         }
     }
 }

@@ -5,14 +5,14 @@ namespace Assets.Scripts
 {
     public class PlayerHealth : MonoBehaviour
     {
-        [SerializeField] private int _maxHealth = 10;
+        [SerializeField] public static int MaxHealth { get; private set; } = 100;
         public static int Health { get; private set; }
         private PlayerAnimationController _animator;
 
 
         private void Start()
         {
-            Health = _maxHealth;
+            Health = MaxHealth;
             _animator = GetComponent<PlayerAnimationController>();
         }
 
@@ -23,7 +23,7 @@ namespace Assets.Scripts
             if (Health <= 0)
             {
                 _animator.DeadAnimation();
-                Time.timeScale = 0;
+
                 Destroy(GetComponent<PlayerHealth>());
 
             }
